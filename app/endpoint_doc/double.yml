@@ -1,0 +1,33 @@
+This is flask templates APIs
+  Call this api to get sum of two numbers given in form data
+  ---
+  tags:
+    - Flask template demo endpoint
+#  parameters:
+#    - name: language
+#      in: path
+#      type: string
+#      required: true
+#      description: The language name
+#    - name: size
+#      in: query
+#      type: integer
+#      description: size of awesomeness
+  responses:
+    500:
+      description: you asked for error
+    200:
+      description: A language with its awesomeness
+      schema:
+        id: awesome
+        properties:
+          language:
+            type: string
+            description: The language name
+            default: Lua
+          features:
+            type: array
+            description: The awesomeness list
+            items:
+              type: string
+            default: ["perfect", "simple", "lovely"]

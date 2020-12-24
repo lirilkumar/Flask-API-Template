@@ -1,0 +1,28 @@
+version: '2'
+services:
+  flask-api:
+    build:
+      context: ./app
+      dockerfile: ./Dockerfile
+    image: flask-api:1.0
+    hostname: flask-api
+    container_name: "flask-api"
+    restart: on-failure
+    volumes:
+      - ./log/api/:/app/log/api/
+      - ./database/:/app/database/
+    ports:
+       - "3399:3399"
+    networks:
+      default:
+      flask_net:
+        ipv4_address: 172.27.10.05
+
+networks:
+  flask_net:
+    internal: true
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.27.10.0/24
